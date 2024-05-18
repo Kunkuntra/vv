@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: #f0f0f0;
+      }
+      
+      #question {
+        text-align: center;
+        font-size: 2em;
+        color: #f06292;
+        animation: question-pulse 1s infinite ease-in-out;
+      }
+      
+      @keyframes question-pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+      
+      #buttons-container {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+      }
+      
+      button {
+        background-color: #f06292;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+      
+      button:hover {
+        background-color: #d74a77;
+      }
+      
+      #no-btn {
+        z-index: 1;
+        position: absolute;
+        background-color: #90caf9;
+      }
+      
+      #no-btn:hover {
+        background-color: #64b5f6;
+      }
+    
+    .change{
+        display: block;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        background-color: rgb(114, 111, 113);
+        z-index: 10;
+    }
+    .form{
+        background-color: #f0f0f0;
+        width: 800px;
+        margin: auto;
+        padding: 20px;
+    }
+    #msg{
+        font-size: 24px;
+        width: 400px;
+    }
+    .none{
+        display: none;
+    }
+    .btn-container{
+      text-decoration: none;
+    }
+    
+</style>
+<body>
+    <div><h1>Em iu có iuuu anh khum ạ ???</h1></div>
+    <div id="yes" class="btn-container">
+        <button type="button" id="yes-btn">Cóooooo</button>
+    </div>
+    <div id="no" class="btn-container">
+        <button type="button" id="no-btn">Không</button>
+    </div>
+    <div class="change none">
+        <div class="form">
+            <h1>Muốn nói gì với anh?</h1>
+            <input type="text" id="msg">
+            <a class="btn-container" href="./tim.html">Gửi</a>
+        </div>
+    </div>
+    <script>
+        const noBtn = document.getElementById('no-btn');
+        const yesBtn = document.getElementById('yes-btn');
+
+        noBtn.addEventListener('mouseover', () => {
+            const windowWidth = window.innerWidth;
+            const windowHeight = window.innerHeight;
+            const buttonWidth = noBtn.offsetWidth;
+            const buttonHeight = noBtn.offsetHeight;
+
+            const maxLeft = windowWidth - buttonWidth - 10; // Avoid button going off-screen
+            const maxTop = windowHeight - buttonHeight - 10;
+
+            const randomLeft = Math.floor(Math.random() * maxLeft);
+            const randomTop = Math.floor(Math.random() * maxTop);
+
+            noBtn.style.left = `${randomLeft}px`;
+            noBtn.style.top = `${randomTop}px`;
+        });
+        noBtn.addEventListener('click', () => {
+            const windowWidth = window.innerWidth;
+            const windowHeight = window.innerHeight;
+            const buttonWidth = noBtn.offsetWidth;
+            const buttonHeight = noBtn.offsetHeight;
+
+            const maxLeft = windowWidth - buttonWidth - 10; // Avoid button going off-screen
+            const maxTop = windowHeight - buttonHeight - 10;
+
+            const randomLeft = Math.floor(Math.random() * maxLeft);
+            const randomTop = Math.floor(Math.random() * maxTop);
+
+            noBtn.style.left = `${randomLeft}px`;
+            noBtn.style.top = `${randomTop}px`;
+        });
+
+        yesBtn.addEventListener('click',() => {
+            alert('Thế thì mau nói lời yêu thương anh đi nào <3 <3 <3');
+            document.querySelector('.change').classList.remove('none');
+
+        });
+        const msgInput = document.getElementById('msg');
+
+        msgInput.addEventListener('input', () => {
+            const message = msgInput.value.trim(); // Lấy giá trị và loại bỏ các khoảng trắng ở đầu và cuối chuỗi
+            const loveText = document.getElementById('love-text');
+            if (message.length > 0) {
+                msgInput.value = "Em yêu anh nhiều lắm".substring(0, message.length);
+            } else {
+                msgInput.value = "";
+            }
+        });
+
+
+
+    </script>
+</body>
+</html>
